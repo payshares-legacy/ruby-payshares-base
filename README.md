@@ -1,7 +1,6 @@
 # Payshares::Base
 
 [![Build Status](https://travis-ci.org/payshares/ruby-payshares-base.svg)](https://travis-ci.org/payshares/ruby-payshares-base)
-[![Code Climate](https://codeclimate.com/github/payshares/ruby-payshares-base/badges/gpa.svg)](https://codeclimate.com/github/payshares/ruby-payshares-base)
 
 The payshares-base library is the lowest-level payshares helper library.  It consists of classes
 to read, write, hash, and sign the xdr structures that are used in paysharesd.
