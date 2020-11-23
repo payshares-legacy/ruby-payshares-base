@@ -1,11 +1,11 @@
-module Stellar
+module Payshares
   Operation.class_eval do
 
     def self.payment(attributes={})
       destination = attributes[:destination]
       amount      = attributes[:amount]
       path        = attributes[:path] || []
-      path        = path.map{|p| Stellar::Currency.send(*p)}
+      path        = path.map{|p| Payshares::Currency.send(*p)}
 
       raise ArgumentError unless destination.is_a?(KeyPair)
 

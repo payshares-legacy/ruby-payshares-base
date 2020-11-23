@@ -1,4 +1,4 @@
-module Stellar
+module Payshares
   Price.class_eval do
     def self.from_f(number)
       return new(n:0,d:0)  if number == 0.0

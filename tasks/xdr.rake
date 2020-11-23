@@ -4,12 +4,12 @@ namespace :xdr do
   # Prior to launch, we should be separating our .x files into a separate
   # repo, and should be able to improve this integration.
   HAYASHI_XDR = [
-    "src/xdr/Stellar-ledger-entries.x",
-    "src/xdr/Stellar-ledger.x",
-    "src/xdr/Stellar-overlay.x",
-    "src/xdr/Stellar-transaction.x",
-    "src/xdr/Stellar-types.x",
-    "src/overlay/StellarXDR.x",
+    "src/xdr/Payshares-ledger-entries.x",
+    "src/xdr/Payshares-ledger.x",
+    "src/xdr/Payshares-overlay.x",
+    "src/xdr/Payshares-transaction.x",
+    "src/xdr/Payshares-types.x",
+    "src/overlay/PaysharesXDR.x",
     "src/scp/SCPXDR.x",
   ]
 
@@ -23,7 +23,7 @@ namespace :xdr do
 
     HAYASHI_XDR.each do |src|
       local_path = "xdr/" + File.basename(src)
-      encoded    = client.contents("stellar/stellar-core", path: src).content
+      encoded    = client.contents("payshares/payshares-core", path: src).content
       decoded    = Base64.decode64 encoded
 
       IO.write(local_path, decoded)
@@ -40,7 +40,7 @@ namespace :xdr do
     compilation = Xdrgen::Compilation.new(
       paths, 
       output_dir: "generated", 
-      namespace:  "stellar-base-generated",
+      namespace:  "payshares-base-generated",
       language:   :ruby
     )
     compilation.compile

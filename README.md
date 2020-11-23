@@ -1,17 +1,17 @@
-# Stellar::Base
+# Payshares::Base
 
-[![Build Status](https://travis-ci.org/stellar/ruby-stellar-base.svg)](https://travis-ci.org/stellar/ruby-stellar-base)
-[![Code Climate](https://codeclimate.com/github/stellar/ruby-stellar-base/badges/gpa.svg)](https://codeclimate.com/github/stellar/ruby-stellar-base)
+[![Build Status](https://travis-ci.org/payshares/ruby-payshares-base.svg)](https://travis-ci.org/payshares/ruby-payshares-base)
+[![Code Climate](https://codeclimate.com/github/payshares/ruby-payshares-base/badges/gpa.svg)](https://codeclimate.com/github/payshares/ruby-payshares-base)
 
-The stellar-base library is the lowest-level stellar helper library.  It consists of classes
-to read, write, hash, and sign the xdr structures that are used in stellard.
+The payshares-base library is the lowest-level payshares helper library.  It consists of classes
+to read, write, hash, and sign the xdr structures that are used in paysharesd.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'stellar-base'
+gem 'payshares-base'
 ```
 
 And then execute:
@@ -20,7 +20,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install stellar-base
+    $ gem install payshares-base
 
 Also requires libsodium. Installable via `brew install libsodium` on OS X.
 
@@ -28,28 +28,28 @@ Also requires libsodium. Installable via `brew install libsodium` on OS X.
 
 [Examples are here](examples)
 
-In addition to the code generated from the XDR definition files (see [ruby-xdr](https://github.com/stellar/ruby-xdr) for example usage), this library also provides some stellar specific features.  Let's look at some of them.
+In addition to the code generated from the XDR definition files (see [ruby-xdr](https://github.com/payshares/ruby-xdr) for example usage), this library also provides some payshares specific features.  Let's look at some of them.
 
-We wrap rbnacl with `Stellar::KeyPair`, providing some stellar specific functionality as seen below:
+We wrap rbnacl with `Payshares::KeyPair`, providing some payshares specific functionality as seen below:
 
 ```ruby
 
-# Create a keypair from a stellar secret seed
-signer = Stellar::KeyPair.from_seed("s3tUdZbCmLoMdrZ6nhqztatMFaiD85P54oVj93g1NeSBwWQpTnE")
+# Create a keypair from a payshares secret seed
+signer = Payshares::KeyPair.from_seed("s3tUdZbCmLoMdrZ6nhqztatMFaiD85P54oVj93g1NeSBwWQpTnE")
 
-# Create a keypair from a stellar address
-verifier = Stellar::KeyPair.from_address("gsTe6bDX54bPwtUAm2TER4shBF8nQNVtEvB8fmRkRoWvq3Y8XmY")
+# Create a keypair from a payshares address
+verifier = Payshares::KeyPair.from_address("gsTe6bDX54bPwtUAm2TER4shBF8nQNVtEvB8fmRkRoWvq3Y8XmY")
 
-# Produce a stellar compliant "decorated signature" that is compliant with stellar transactions
+# Produce a payshares compliant "decorated signature" that is compliant with payshares transactions
 
-signer.sign_decorated("Hello world!") # => #<Stellar::DecoratedSignature ...>
+signer.sign_decorated("Hello world!") # => #<Payshares::DecoratedSignature ...>
 
 ```
 
-This library also provides an impementation of base58 and base58check encoding, with support for the bitcoin and stellar alphabets:
+This library also provides an impementation of base58 and base58check encoding, with support for the bitcoin and payshares alphabets:
 
 ```ruby
-b58 = Stellar::Util::Base58.stellar
+b58 = Payshares::Util::Base58.payshares
 
 encoded = b58.encode("\x00\x00\x00") # => "ggg"
 b58.decode(encoded) # => "\x00\x00\x00"

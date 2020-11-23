@@ -1,7 +1,7 @@
-module Stellar
+module Payshares
   class KeyPair
     def self.from_seed(seed)
-      seed_bytes = Util::Base58.stellar.check_decode(:seed, seed)
+      seed_bytes = Util::Base58.payshares.check_decode(:seed, seed)
       from_raw_seed seed_bytes
     end
 
@@ -17,7 +17,7 @@ module Stellar
     end
 
     def self.from_address(address)
-      pk_bytes = Util::Base58.stellar.check_decode(:account_id, address)
+      pk_bytes = Util::Base58.payshares.check_decode(:account_id, address)
       from_public_key(pk_bytes)
     end
 
@@ -54,14 +54,14 @@ module Stellar
 
     def address
       pk_bytes = public_key
-      Util::Base58.stellar.check_encode(:account_id, pk_bytes)
+      Util::Base58.payshares.check_encode(:account_id, pk_bytes)
     end
 
     def seed
       raise "no private key" if @secret_key.nil?
       #TODO: improve the error class above
       seed_bytes = raw_seed
-      encoder = Util::Base58.stellar.check_encode(:seed, seed_bytes)
+      encoder = Util::Base58.payshares.check_encode(:seed, seed_bytes)
     end
 
     def sign?
@@ -76,7 +76,7 @@ module Stellar
 
     def sign_decorated(message)
       raw_signature = sign(message)
-      Stellar::DecoratedSignature.new({
+      Payshares::DecoratedSignature.new({
         hint:      public_key_hint,
         signature: raw_signature
       })

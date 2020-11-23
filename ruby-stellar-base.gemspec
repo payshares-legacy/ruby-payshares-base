@@ -1,15 +1,15 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'stellar/base/version'
+require 'payshares/base/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "stellar-base"
-  spec.version       = Stellar::Base::VERSION
+  spec.name          = "payshares-base"
+  spec.version       = Payshares::Base::VERSION
   spec.authors       = ["Scott Fleckenstein"]
-  spec.email         = ["scott@stellar.org"]
-  spec.summary       = %q{Stellar client library: XDR}
-  spec.homepage      = "https://github.com/stellar/ruby-stellar-vase"
+  spec.email         = ["scott@payshares.org"]
+  spec.summary       = %q{Payshares client library: XDR}
+  spec.homepage      = "https://github.com/payshares/ruby-payshares-vase"
   spec.license       = "Apache 2.0"
 
   spec.files         = `git ls-files -z`.split("\x0")

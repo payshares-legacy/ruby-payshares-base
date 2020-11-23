@@ -1,1 +1,1 @@
-require "stellar-base"
+require "payshares-base"

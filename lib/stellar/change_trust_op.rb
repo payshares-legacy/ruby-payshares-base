@@ -1,4 +1,4 @@
-module Stellar
+module Payshares
   ChangeTrustOp.class_eval do
 
     def to_operation(source_account=nil)

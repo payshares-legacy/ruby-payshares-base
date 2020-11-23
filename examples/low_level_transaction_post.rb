@@ -7,31 +7,31 @@
 # Look at mid_level_transaction_post.rb to see a friendlier form
 
 require 'rbnacl'
-require 'stellar-base'
+require 'payshares-base'
 require 'faraday'
 require 'digest/sha2'
 
 master      = RbNaCl::SigningKey.new("allmylifemyhearthasbeensearching")
 destination = RbNaCl::SigningKey.new("allmylifemyhearthasbeensearching")
 
-tx            = Stellar::Transaction.new
+tx            = Payshares::Transaction.new
 tx.account    = master.verify_key.to_bytes
 tx.max_fee    = 1000
 tx.seq_num    = 1
 tx.max_ledger = 1000
 tx.min_ledger = 0
 
-payment = Stellar::PaymentOp.new
+payment = Payshares::PaymentOp.new
 payment.destination = destination.verify_key.to_bytes
-payment.currency = Stellar::Currency.new(:native)
+payment.currency = Payshares::Currency.new(:native)
 payment.path = []
 payment.amount = 200_000000
 payment.send_max = 200_000000
 payment.source_memo = ""
 payment.memo = ""
 
-op = Stellar::Operation.new
-op.body = Stellar::Operation::Body.new(:payment, payment)
+op = Payshares::Operation.new
+op.body = Payshares::Operation::Body.new(:payment, payment)
 
 tx.operations = [op]
 
@@ -39,9 +39,9 @@ raw       = tx.to_xdr
 tx_hash   = Digest::SHA256.digest raw
 signature = master.sign(tx_hash)
 
-env = Stellar::TransactionEnvelope.new
+env = Payshares::TransactionEnvelope.new
 env.tx = tx
-env.signatures = [Stellar::DecoratedSignature.new({
+env.signatures = [Payshares::DecoratedSignature.new({
   hint:master.verify_key.to_bytes[0...4], 
   signature:signature
 })]

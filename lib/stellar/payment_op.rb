@@ -1,8 +1,8 @@
-module Stellar
+module Payshares
   PaymentOp.class_eval do
 
     def self.native(amount)
-      currency = Stellar::Currency.new(:native)
+      currency = Payshares::Currency.new(:native)
       with_currency(currency).tap do |result|
         result.amount   = amount
         result.send_max = amount
@@ -10,7 +10,7 @@ module Stellar
     end
 
     def self.iso4217(code, issuer, amount)
-      currency = Stellar::Currency.iso4217(code, issuer)
+      currency = Payshares::Currency.iso4217(code, issuer)
       with_currency(currency).tap do |result|
         result.amount   = amount
         result.send_max = amount

@@ -8,7 +8,7 @@
 # which is where we extend the xdrgen generated source files with our higher
 # level api.
 
-require 'stellar-base'
+require 'payshares-base'
 require 'faraday'
 require 'faraday_middleware'
 
@@ -17,10 +17,10 @@ $server = Faraday.new(url: "http://localhost:39132") do |conn|
   conn.adapter Faraday.default_adapter
 end
 
-master      = Stellar::KeyPair.from_raw_seed("allmylifemyhearthasbeensearching")
-destination = Stellar::KeyPair.from_raw_seed("allmylifemyhearthasbeensearching")
+master      = Payshares::KeyPair.from_raw_seed("allmylifemyhearthasbeensearching")
+destination = Payshares::KeyPair.from_raw_seed("allmylifemyhearthasbeensearching")
 
-tx = Stellar::Transaction.payment({
+tx = Payshares::Transaction.payment({
   account:     master,
   destination: destination,
   sequence:    1,
@@ -31,4 +31,4 @@ hex    = tx.to_envelope(master).to_xdr(:hex)
 
 result = $server.get('tx', blob: hex)
 raw    = [result.body["result"]].pack("H*")
-p Stellar::TransactionResult.from_xdr(raw)
+p Payshares::TransactionResult.from_xdr(raw)

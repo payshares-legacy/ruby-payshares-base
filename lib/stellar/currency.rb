@@ -1,4 +1,4 @@
-module Stellar
+module Payshares
   Currency.class_eval do
     def self.native
       new(:native)
@@ -14,7 +14,7 @@ module Stellar
       if switch == CurrencyType.native
         "native"
       else
-        encoder = Stellar::Util::Base58.stellar
+        encoder = Payshares::Util::Base58.payshares
         issuer_address = encoder.check_encode(:account_id,iso_ci.issuer)
         "#{iso_ci.currency_code}/#{issuer_address}"
       end
@@ -22,7 +22,7 @@ module Stellar
 
     def inspect
       label = switch.to_s
-      "#<Stellar::Currency #{to_s}>"
+      "#<Payshares::Currency #{to_s}>"
     end
   end
 end

@@ -1,7 +1,7 @@
-module Stellar
+module Payshares
   module Util
     class Base58
-      STELLAR_ALPHABET = "gsphnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCr65jkm8oFqi1tuvAxyz"
+      PAYSHARES_ALPHABET = "xsphnaf39wBUDNEGHJKLM4PQRST7VWXYZ2bcdeCr65jkm8oFqi1tuvAgyz"
       BITCOIN_ALPHABET = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
       BASE             = 58
 
@@ -12,8 +12,8 @@ module Stellar
         seed:       [33].pack("C").encode("BINARY"),
       }
 
-      def self.stellar
-        Thread.current[:stellar_base58] ||= new(STELLAR_ALPHABET)
+      def self.payshares
+        Thread.current[:payshares_base58] ||= new(STELLAR_ALPHABET)
       end
 
       def self.bitcoin

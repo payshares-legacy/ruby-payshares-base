@@ -12,7 +12,7 @@
 # example is pretty cumbersome to run.  It is only used for illustrative purposes
 # of the flow
 
-require 'stellar-base'
+require 'payshares-base'
 require 'faraday'
 require 'faraday_middleware'
 
@@ -25,13 +25,13 @@ def submit(key, tx)
   hex      = tx.to_envelope(key).to_xdr(:hex)
   response = $server.get('tx', blob: hex)
   raw = [response.body["result"]].pack("H*")
-  p Stellar::TransactionResult.from_xdr(raw)
+  p Payshares::TransactionResult.from_xdr(raw)
 end
 
-master      = Stellar::KeyPair.from_raw_seed("allmylifemyhearthasbeensearching")
-destination = Stellar::KeyPair.from_raw_seed("allmylifemyhearthasbeensearching")
+master      = Payshares::KeyPair.from_raw_seed("allmylifemyhearthasbeensearching")
+destination = Payshares::KeyPair.from_raw_seed("allmylifemyhearthasbeensearching")
 
-submit master, Stellar::Transaction.payment({
+submit master, Payshares::Transaction.payment({
   account:     master,
   destination: destination,
   sequence:    1,
@@ -45,14 +45,14 @@ gets # pause to get the account's sequence from the hayashi db
 destination_sequence = FILL_ME_IN 
 # destination_sequence = 17179869185
 
-submit destination, Stellar::Transaction.change_trust({
+submit destination, Payshares::Transaction.change_trust({
   account:    destination,
   sequence:   destination_sequence,
   line:       [:iso4217, "USD\x00", master],
   limit:      1000
 })
 
-submit master, Stellar::Transaction.payment({
+submit master, Payshares::Transaction.payment({
   account:     master,
   destination: destination,
   sequence:    3,

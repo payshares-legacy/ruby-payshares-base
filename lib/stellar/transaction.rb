@@ -1,20 +1,20 @@
-module Stellar
+module Payshares
   Transaction.class_eval do
 
     # 
-    # @see  Stellar::Operation.payment
+    # @see  Payshares::Operation.payment
     def self.payment(attributes={})
       make :payment, attributes
     end
 
     # 
-    # @see  Stellar::Operation.change_trust
+    # @see  Payshares::Operation.change_trust
     def self.change_trust(attributes={})
       make :change_trust, attributes
     end
 
     # 
-    # @see  Stellar::Operation.create_offer
+    # @see  Payshares::Operation.create_offer
     def self.create_offer(attributes={})
       make :create_offer, attributes
     end
@@ -22,15 +22,15 @@ module Stellar
     # 
     # Helper method to create a transaction with a single
     # operation of the provided type.  See class methods
-    # on Stellar::Operation for available values for 
+    # on Payshares::Operation for available values for 
     # operation_type.
     # 
-    # @see  Stellar::Operation
+    # @see  Payshares::Operation
     # 
     # @param operation_type [Symbol] the operation to use
     # @param attributes={} [Hash] attributes to use for both the transaction and the operation
     # 
-    # @return [Stellar::Transaction] the resulting transaction
+    # @return [Payshares::Transaction] the resulting transaction
     def self.make(operation_type, attributes={})
       for_account(attributes).tap do |result|
         result.operations = [Operation.send(operation_type, attributes)]
@@ -46,7 +46,7 @@ module Stellar
     # 
     # @param attributes={} [type] [description]
     # 
-    # @return [Stellar::Transaction] the resulting skeleton
+    # @return [Payshares::Transaction] the resulting skeleton
     def self.for_account(attributes={})
       account  = attributes[:account]
       sequence = attributes[:sequence]
