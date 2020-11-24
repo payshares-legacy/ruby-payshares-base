@@ -37,7 +37,7 @@ We wrap rbnacl with `Payshares::KeyPair`, providing some payshares specific func
 signer = Payshares::KeyPair.from_seed("s3QkY97wSa5KTE5zdUHKk7aoyM5Bm1ySzV7bgkCdRLpGK7ptRu6")
 
 # Create a keypair from a payshares address
-verifier = Payshares::KeyPair.from_address("s3QkY97wSa5KTE5zdUHKk7aoyM5Bm1ySzV7bgkCdRLpGK7ptRu6")
+verifier = Payshares::KeyPair.from_address("xa2hhPxPwi4gyQVPsTUMmWgb4eBkDN8SJA")
 
 # Produce a payshares compliant "decorated signature" that is compliant with payshares transactions
 
