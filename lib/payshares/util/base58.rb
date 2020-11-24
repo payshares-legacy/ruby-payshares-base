@@ -13,7 +13,7 @@ module Payshares
       }
 
       def self.payshares
-        Thread.current[:payshares_base58] ||= new(STELLAR_ALPHABET)
+        Thread.current[:payshares_base58] ||= new(PAYSHARES_ALPHABET)
       end
 
       def self.bitcoin
