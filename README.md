@@ -34,10 +34,10 @@ We wrap rbnacl with `Payshares::KeyPair`, providing some payshares specific func
 ```ruby
 
 # Create a keypair from a payshares secret seed
-signer = Payshares::KeyPair.from_seed("s3tUdZbCmLoMdrZ6nhqztatMFaiD85P54oVj93g1NeSBwWQpTnE")
+signer = Payshares::KeyPair.from_seed("s3QkY97wSa5KTE5zdUHKk7aoyM5Bm1ySzV7bgkCdRLpGK7ptRu6")
 
 # Create a keypair from a payshares address
-verifier = Payshares::KeyPair.from_address("gsTe6bDX54bPwtUAm2TER4shBF8nQNVtEvB8fmRkRoWvq3Y8XmY")
+verifier = Payshares::KeyPair.from_address("s3QkY97wSa5KTE5zdUHKk7aoyM5Bm1ySzV7bgkCdRLpGK7ptRu6")
 
 # Produce a payshares compliant "decorated signature" that is compliant with payshares transactions
 
