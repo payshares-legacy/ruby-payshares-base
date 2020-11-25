@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["generated", "lib"]
 
-  spec.add_dependency "xdr", :path => "../ruby-xdr"
+  spec.add_dependency "xdr"
   spec.add_dependency "rbnacl", "3.1.2"
   spec.add_dependency "activesupport", "4.1.9"
 
@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.7"
   # rake version 10.4.2
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "xdrgen", :path => "../xdrgen"
+  spec.add_development_dependency "xdrgen"
   spec.add_development_dependency "rspec", "3.2.0"
   spec.add_development_dependency "guard-rspec", "4.5.0"
   spec.add_development_dependency "simplecov", "0.9.2"
