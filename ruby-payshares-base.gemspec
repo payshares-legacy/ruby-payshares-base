@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.7"
   # rake version 10.4.2
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "xdrgen"
+  spec.add_development_dependency "xdrgen", "~> 0.0.1"
   spec.add_development_dependency "rspec", "~> 3.1"
   spec.add_development_dependency "guard-rspec"
   spec.add_development_dependency "simplecov"
