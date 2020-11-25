@@ -19,11 +19,13 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "xdr", "~> 0.0.2"
   spec.add_dependency "rbnacl", "3.1.2"
-  spec.add_dependency "activesupport", "~> 4"
+  spec.add_dependency "activesupport", "4.1.9"
 
+  # bundler version 1.17.3
   spec.add_development_dependency "bundler", "~> 1.7"
+  # rake version 10.4.2
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "xdrgen"
+  spec.add_development_dependency "xdrgen", git => "https://github.com/payshares/xdrgen.git"
   spec.add_development_dependency "rspec", "~> 3.1"
   spec.add_development_dependency "guard-rspec"
   spec.add_development_dependency "simplecov"
