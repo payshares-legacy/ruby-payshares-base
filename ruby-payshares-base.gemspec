@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "payshares-base"
   spec.version       = Payshares::Base::VERSION
   spec.authors       = ["Scott Fleckenstein"]
-  spec.email         = ["scott@payshares.org"]
+  spec.email         = ["scott@stellar.org"]
   spec.summary       = %q{Payshares client library: XDR}
   spec.homepage      = "https://github.com/payshares/ruby-payshares-base"
   spec.license       = "Apache 2.0"
@@ -25,7 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "bundler", "~> 1.7"
   # rake version 10.4.2
   spec.add_development_dependency "rake", "~> 10.0"
-  spec.add_development_dependency "xdrgen"
+  # spec.add_development_dependency "xdrgen"
   spec.add_development_dependency "rspec", "3.2.0"
   spec.add_development_dependency "guard-rspec", "4.5.0"
   spec.add_development_dependency "simplecov", "0.9.2"
